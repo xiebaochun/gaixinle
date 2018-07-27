@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Cocos2d-JS</title>
+    <style>
+      html,body{width: 100%;height: 100%;margin:0;padding:0;}
+      #Cocos2dGameContainer{width: 100%;height: 100%;}
+      #gameCanvas{width: 100%;height: 100%;}
+    </style>
+</head>
+<body>   
+    <canvas id="gameCanvas" width="414" height="736"></canvas>
+    <script type="text/javascript" src="cocos2d-js-v3.13-lite.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+          var scaleRate = .39;
+          window.onload = function(){
+              cc.game.onStart = function(){
+                  //load resources
+                  cc.LoaderScene.preload(["img/bg_1.png"], function () {
+                      var MyScene = cc.Scene.extend({
+                          onEnter:function () {
+                              this._super();
+                              var size = cc.director.getWinSize();
+                              var sprite = cc.Sprite.create("img/bg_1.png");
+                              sprite.setPosition(size.width / 2, size.height / 2);
+                              sprite.setScale(scaleRate);
+                              this.addChild(sprite, 0);
+
+                              // var label = cc.LabelTTF.create("Hello World", "Arial", 40);
+                              // label.setPosition(size.width / 2, size.height / 2);
+                              // this.addChild(label, 1);
+
+                              // game1
+                              var game1 = cc.Sprite.create("img/game_1_ico.png");
+                              game1.setPosition(size.width / 3.1, size.height / 2.6);
+                              game1.setScale(scaleRate);
+                              this.addChild(game1, 0);
+
+                              // game2
+                              var game2 = cc.Sprite.create("img/game_2_ico.png");
+                              game2.setPosition(size.width / 1.5, size.height / 1.5);
+                              game2.setScale(scaleRate);
+                              this.addChild(game2, 0);
+
+
+                              var listener = cc.EventListener.create({
+                                event: cc.EventListener.TOUCH_ONE_BY_ONE,
+                                swallowTouches: true,
+                                onTouchBegan: function (touch, event) {
+                                    //do something
+                                    cc.director.runScene(new Game1());
+                                    return true;
+                                }
+                             });
+
+                              cc.eventManager.addListener(listener, game1);
+                          }
+                      });
+
+                      var Game1 = cc.Scene.extend({
+                          onEnter:function () {
+                              this._super();
+                              var size = cc.director.getWinSize();
+                              var sprite = cc.Sprite.create("img/bg_1.png");
+                              sprite.setPosition(size.width / 2, size.height / 2);
+                              sprite.setScale(scaleRate);
+                              this.addChild(sprite, 0);
+
+                              // var label = cc.LabelTTF.create("Hello World", "Arial", 40);
+                              // label.setPosition(size.width / 2, size.height / 2);
+                              // this.addChild(label, 1);
+
+                              // game1
+                              var game1 = cc.Sprite.create("img/game_1_ico.png");
+                              game1.setPosition(size.width / 3.1, size.height / 2.6);
+                              game1.setScale(scaleRate);
+                              this.addChild(game1, 0);
+
+                              // game2
+                              var game2 = cc.Sprite.create("img/game_2_ico.png");
+                              game2.setPosition(size.width / 1.5, size.height / 1.5);
+                              game2.setScale(scaleRate);
+                              this.addChild(game2, 0);
+
+
+                              var listener = cc.EventListener.create({
+                                event: cc.EventListener.TOUCH_ONE_BY_ONE,
+                                swallowTouches: true,
+                                onTouchBegan: function (touch, event) {
+                                    //do something
+                                    return true;
+                                }
+                             });
+
+                              cc.eventManager.addListener(listener, game1);
+                          }
+                      });
+                      cc.director.runScene(new MyScene());
+                  }, this);
+              };
+              cc.game.run("gameCanvas");
+          };
+    </script>
+</body>
+</html>

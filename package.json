@@ -1,0 +1,11 @@
+{
+  "name": "cocos2d-js-v3.13-lite",
+  "version": "1.0.0",
+  "description": "This guide is for the usage of single file engine of Cocos2d-JS which can be retrieved from [the online downloader](http://cocos2d-x.org/filecenter/jsbuilder/).",
+  "main": "cocos2d-js-v3.13-lite.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
